@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>白河木棉花攝影一日遊</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rust: #C0532A;
+    --rust-light: #E8713E;
+    --rust-pale: #F5DDD1;
+    --amber: #D4872B;
+    --amber-light: #F2C36B;
+    --forest: #3D5A3E;
+    --forest-light: #5A7A5B;
+    --cream: #FAF6F0;
+    --warm-white: #FFFDF9;
+    --charcoal: #2C2420;
+    --mid: #6B5A4E;
+    --light-mid: #9E8878;
+    --border: rgba(192,83,42,0.15);
+    --shadow: 0 4px 24px rgba(44,36,32,0.10);
+    --shadow-strong: 0 8px 40px rgba(44,36,32,0.18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    min-height: 100vh;
+    padding-bottom: 80px;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 260px;
+    background: linear-gradient(160deg, #8B3A18 0%, #C0532A 40%, #D4872B 80%, #E8AA5A 100%);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 20px 24px;
+  }
+
+  .hero-petals {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .petal {
+    position: absolute;
+    border-radius: 50% 0 50% 0;
+    opacity: 0.18;
+    animation: drift linear infinite;
+  }
+
+  @keyframes drift {
+    0%   { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.25; }
+    90%  { opacity: 0.15; }
+    100% { transform: translateY(320px) rotate(360deg); opacity: 0; }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.95);
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    width: fit-content;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    margin-bottom: 6px;
+  }
+
+  .hero-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-deco {
+    position: absolute;
+    right: -20px;
+    top: 20px;
+    font-size: 130px;
+    opacity: 0.12;
+    line-height: 1;
+    user-select: none;
+  }
+
+  /* ── SUMMARY PILLS ── */
+  .summary-strip {
+    background: var(--warm-white);
+    padding: 14px 20px;
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .summary-strip::-webkit-scrollbar { display: none; }
+
+  .pill {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--rust-pale);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 11.5px;
+    color: var(--rust);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .pill .pill-icon { font-size: 13px; }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    padding: 20px 20px 8px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--light-mid);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── TIMELINE CARDS ── */
+  .timeline {
+    padding: 0 16px;
+    position: relative;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 42px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--rust-light), var(--amber), var(--forest-light));
+    opacity: 0.3;
+    border-radius: 2px;
+  }
+
+  .stop {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    position: relative;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .stop:nth-child(1) { animation-delay: 0.05s; }
+  .stop:nth-child(2) { animation-delay: 0.12s; }
+  .stop:nth-child(3) { animation-delay: 0.18s; }
+  .stop:nth-child(4) { animation-delay: 0.24s; }
+  .stop:nth-child(5) { animation-delay: 0.30s; }
+  .stop:nth-child(6) { animation-delay: 0.36s; }
+
+  .stop-time {
+    flex-shrink: 0;
+    width: 54px;
+    text-align: right;
+    padding-top: 14px;
+  }
+
+  .stop-time span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--mid);
+    letter-spacing: 0.02em;
+  }
+
+  .stop-dot-wrap {
+    flex-shrink: 0;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px;
+  }
+
+  .stop-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2.5px solid var(--rust);
+    background: var(--warm-white);
+    z-index: 1;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .stop.highlight .stop-dot {
+    background: var(--rust);
+    box-shadow: 0 0 0 4px rgba(192,83,42,0.15);
+    width: 16px;
+    height: 16px;
+  }
+
+  .stop-card {
+    flex: 1;
+    background: var(--warm-white);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: transform 0.18s, box-shadow 0.18s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stop-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--rust-light), var(--amber));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .stop.highlight .stop-card::before {
+    opacity: 1;
+  }
+
+  .stop-card:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-strong);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .card-icon {
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .card-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--charcoal);
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .card-tag {
+    flex-shrink: 0;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .tag-photo  { background: rgba(192,83,42,0.12); color: var(--rust); }
+  .tag-food   { background: rgba(212,135,43,0.15); color: var(--amber); }
+  .tag-star   { background: rgba(61,90,62,0.12);   color: var(--forest); }
+  .tag-drive  { background: rgba(107,90,78,0.10);  color: var(--mid); }
+
+  .card-desc {
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  .card-tips {
+    background: var(--rust-pale);
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+  }
+
+  .card-tips .tip-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--rust);
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .card-tips ul {
+    padding-left: 14px;
+  }
+
+  .card-tips li {
+    font-size: 11.5px;
+    color: var(--charcoal);
+    line-height: 1.8;
+  }
+
+  .map-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 9px 0;
+    background: var(--rust);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.18s, transform 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .map-btn:active {
+    background: #A04020;
+    transform: scale(0.97);
+  }
+
+  .map-btn.secondary {
+    background: transparent;
+    color: var(--rust);
+    border: 1.5px solid var(--rust);
+    margin-top: 6px;
+  }
+
+  .map-btn.secondary:active {
+    background: var(--rust-pale);
+  }
+
+  /* ── DRIVE CARD ── */
+  .drive-card {
+    margin: 0 16px 14px;
+    background: linear-gradient(135deg, var(--charcoal) 0%, #3D2E28 100%);
+    border-radius: 16px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--shadow-strong);
+    animation: fadeUp 0.5s ease 0.1s both;
+  }
+
+  .drive-icon-wrap {
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .drive-info h3 {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    font-family: 'Noto Serif TC', serif;
+  }
+
+  .drive-info p {
+    color: rgba(255,255,255,0.6);
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+
+  .drive-arrow {
+    margin-left: auto;
+    color: rgba(255,255,255,0.4);
+    font-size: 18px;
+  }
+
+  /* ── TIPS BOX ── */
+  .tips-box {
+    margin: 0 16px 20px;
+    background: var(--forest);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  .tips-box h3 {
+    font-family: 'Noto Serif TC', serif;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .tip-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .tip-item .tip-icon { font-size: 18px; margin-bottom: 4px; display: block; }
+  .tip-item .tip-name { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.9); display: block; margin-bottom: 2px; }
+  .tip-item .tip-desc { font-size: 10.5px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+  /* ── BOTTOM NAV ── */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,253,249,0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    display: flex;
+    z-index: 100;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 8px;
+    gap: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    border: none;
+    background: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-item:active { opacity: 0.6; }
+
+  .nav-icon { font-size: 20px; transition: transform 0.2s; }
+  .nav-label { font-size: 10px; color: var(--light-mid); font-weight: 500; letter-spacing: 0.02em; }
+
+  .nav-item.active .nav-icon { transform: scale(1.1); }
+  .nav-item.active .nav-label { color: var(--rust); font-weight: 600; }
+
+  /* ── MODALS / PAGES ── */
+  .page {
+    display: none;
+  }
+
+  .page.active { display: block; }
+
+  /* ── TRANSPORT PAGE ── */
+  .transport-hero {
+    background: linear-gradient(135deg, var(--charcoal) 0%, #3D2E28 100%);
+    padding: 24px 20px 20px;
+    color: #fff;
+  }
+
+  .transport-hero h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .transport-hero p {
+    font-size: 12px;
+    opacity: 0.65;
+  }
+
+  .route-card {
+    margin: 12px 16px;
+    background: var(--warm-white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .route-header {
+    padding: 14px 16px;
+    background: linear-gradient(to right, var(--rust-pale), var(--warm-white));
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .route-num {
+    width: 28px;
+    height: 28px;
+    background: var(--rust);
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .route-header h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--charcoal);
+  }
+
+  .route-header span {
+    font-size: 11px;
+    color: var(--mid);
+    margin-top: 2px;
+    display: block;
+  }
+
+  .route-steps {
+    padding: 12px 16px;
+  }
+
+  .route-step {
+    display: flex;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.06);
+    align-items: flex-start;
+  }
+
+  .route-step:last-child { border-bottom: none; }
+
+  .step-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  .step-text {
+    font-size: 12.5px;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+
+  .step-text strong { color: var(--rust); }
+
+  .big-nav-btn {
+    margin: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    background: var(--rust);
+    color: #fff;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Noto Sans TC', sans-serif;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(192,83,42,0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .big-nav-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 8px rgba(192,83,42,0.2);
+  }
+
+  /* ── INFO PAGE ── */
+  .info-section {
+    margin: 12px 16px;
+    background: var(--warm-white);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .info-section h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .gear-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .gear-row:last-child { border-bottom: none; }
+
+  .gear-icon {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    background: var(--rust-pale);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .gear-text strong { font-size: 13px; color: var(--charcoal); display: block; font-weight: 600; }
+  .gear-text span   { font-size: 11.5px; color: var(--mid); line-height: 1.5; }
+
+  .warn-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .warn-item:last-child { border-bottom: none; }
+  .warn-dot { width: 6px; height: 6px; background: var(--rust); border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .warn-text { font-size: 12.5px; color: var(--charcoal); line-height: 1.7; }
+
+  /* ── SCROLL SNAP EFFECT ── */
+  .fade-in { animation: fadeUp 0.4s ease both; }
+
+  /* Safe area */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .bottom-nav { padding-bottom: env(safe-area-inset-bottom); }
+    body { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ PAGE: 行程 ═══ -->
+<div class="page active" id="page-itinerary">
+
+  <div class="hero">
+    <div class="hero-petals" id="petals"></div>
+    <div class="hero-deco">🌺</div>
+    <div class="hero-badge">
+      <span>📍</span> 台南市南區 → 白河 → 玉井
+    </div>
+    <h1>白河木棉花<br>攝影一日遊</h1>
+    <div class="hero-sub">3月中旬 – 4月上旬 ｜ 全程約 130 公里</div>
+  </div>
+
+  <div class="summary-strip">
+    <div class="pill"><span class="pill-icon">⏰</span> 出發 9:30</div>
+    <div class="pill"><span class="pill-icon">📷</span> 5 個攝影點</div>
+    <div class="pill"><span class="pill-icon">🚗</span> 自駕行程</div>
+    <div class="pill"><span class="pill-icon">🌅</span> 斜射光黃金時段</div>
+    <div class="pill"><span class="pill-icon">🍜</span> 在地美食</div>
+  </div>
+
+  <div class="section-title">行程時刻表</div>
+
+  <div class="timeline">
+    <div class="timeline-line"></div>
+
+    <!-- STOP 1 -->
+    <div class="stop">
+      <div class="stop-time"><span>09:30</span></div>
+      <div class="stop-dot-wrap"><div class="stop-dot"></div></div>
+      <div class="stop-card">
+        <div class="card-header">
+          <span class="card-icon">🏠</span>
+          <div class="card-title">出發地點</div>
+          <span class="card-tag tag-drive">出發</span>
+        </div>
+        <p class="card-desc">台南市南區西門路一段，沿 86 快速道路往北，接台 1 線往白河，車程約 50–60 分鐘。</p>
+        <a class="map-btn" href="https://maps.google.com/maps/dir/?api=1&destination=23.3781,120.4099&travelmode=driving" target="_blank">
+          🗺 開啟導航至白河花道
+        </a>
+      </div>
+    </div>
+
+    <!-- STOP 2 -->
+    <div class="stop highlight">
+      <div class="stop-time"><span>10:30</span></div>
+      <div class="stop-dot-wrap"><div class="stop-dot"></div></div>
+      <div class="stop-card">
+        <div class="card-header">
+          <span class="card-icon">🌺</span>
+          <div class="card-title">白河林初埤木棉花道</div>
+          <span class="card-tag tag-photo">攝影</span>
+        </div>
+        <p class="card-desc">長達 2 公里的火紅木棉花隧道，台灣最浪漫的鄉間花道，停留約 60 分鐘。</p>
+        <div class="card-tips">
+          <div class="tip-label">📸 攝影提示</div>
+          <ul>
+            <li>從花道南端往北構圖，呈現對稱隧道感</li>
+            <li>俯臥仰角讓紅花填滿天際線</li>
+            <li>地面落花搭配人影，增加故事層次</li>
+            <li>建議帶 CPL 偏光鏡壓深藍天</li>
+          </ul>
+        </div>
+        <a class="map-btn" href="https://maps.google.com/maps/place/23.3781,120.4099" target="_blank">
+          🗺 Google Map 導航
+        </a>
+      </div>
+    </div>
+
+    <!-- STOP 3 -->
+    <div class="stop">
+      <div class="stop-time"><span>12:00</span></div>
+      <div class="stop-dot-wrap"><div class="stop-dot"></div></div>
+      <div class="stop-card">
+        <div class="card-header">
+          <span class="card-icon">🍜</span>
+          <div class="card-title">莊良伯麵店（午餐）</div>
+          <span class="card-tag tag-food">美食</span>
+        </div>
+        <p class="card-desc">白河在地老麵店，芝麻醬麵是招牌，每碗 35–40 元，平價美味。⚠️ 周一二公休，周三至日 10:00–16:00。</p>
+        <a class="map-btn" href="https://maps.google.com/maps/place/23.3483,120.4159" target="_blank">
+          🗺 Google Map 導航
+        </a>
+      </div>
+    </div>
+
+    <!-- STOP 4 -->
+    <div class="stop">
+      <div class="stop-time"><span>13:30</span></div>
+      <div class="stop-dot-wrap"><div class="stop-dot"></div></div>
+      <div class="stop-card">
+        <div class="card-header">
+          <span class="card-icon">🪷</span>
+          <div class="card-title">白河蓮花園區</div>
+          <span class="card-tag tag-photo">攝影</span>
+        </div>
+        <p class="card-desc">午後柔和側光，在蓮田田埂旁拍攝農村風情。翠綠稻野配藍天效果極佳，停留約 40 分鐘。</p>
+        <div class="card-tips">
+          <div class="tip-label">📸 攝影提示</div>
+          <ul>
+            <li>此時段光線仍柔和，適合廣角拍攝田野全景</li>
+            <li>尋找倒映水面的雲朵構圖</li>
+          </ul>
+        </div>
+        <a class="map-btn" href="https://maps.google.com/maps/place/23.3964,120.4256" target="_blank">
+          🗺 Google Map 導航
+        </a>
+      </div>
+    </div>
+
+    <!-- STOP 5 ⭐ GOLDEN HOUR -->
+    <div class="stop highlight">
+      <div class="stop-time"><span>15:00</span></div>
+      <div class="stop-dot-wrap"><div class="stop-dot"></div></div>
+      <div class="stop-card">
+        <div class="card-header">
+          <span class="card-icon">🌸</span>
+          <div class="card-title">玥園思親步道</div>
+          <span class="card-tag tag-star">⭐ 重頭戲</span>
+        </div>
+        <p class="card-desc">玉井山區秘境步道，主人種植苦楝與柏木逾十年，四月粉紫花海盛開。停留約 90 分鐘。</p>
+        <div class="card-tips">
+          <div class="tip-label">🌅 斜射光黃金時段 15:00–16:30</div>
+          <ul>
+            <li>側光從樹冠透射，形成丁達爾效應光柱</li>
+            <li>逆光拍花瓣透光質感，半透明如寶石</li>
+            <li>慢行等光線，每個轉角都有不同構圖</li>
+            <li>帶反光板補光，人像受光更均勻</li>
+          </ul>
+        </div>
+        <a class="map-btn" href="https://maps.google.com/maps/place/23.1471,120.4616" target="_blank">
+          🗺 Google Map 導航
+        </a>
+      </div>
+    </div>
+
+    <!-- STOP 6 -->
+    <div class="stop">
+      <div class="stop-time"><span>17:00</span></div>
+      <div class="stop-dot-wrap"><div class="stop-dot"></div></div>
+      <div class="stop-card">
+        <div class="card-header">
+          <span class="card-icon">🏠</span>
+          <div class="card-title">返回台南南區</div>
+          <span class="card-tag tag-drive">回程</span>
+        </div>
+        <p class="card-desc">由玉井沿台 20 線往西，接台 84 快速道路或省道直行，約 40–50 分鐘返抵台南市南區。</p>
+        <a class="map-btn" href="https://maps.google.com/maps/dir/?api=1&origin=23.1471,120.4616&destination=22.9851,120.1946&travelmode=driving" target="_blank">
+          🗺 規劃回程路線
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+
+  <!-- GEAR TIPS -->
+  <div class="section-title">裝備清單</div>
+  <div class="tips-box">
+    <h3>📷 今日攝影裝備</h3>
+    <div class="tips-grid">
+      <div class="tip-item">
+        <span class="tip-icon">🔭</span>
+        <span class="tip-name">廣角鏡</span>
+        <span class="tip-desc">16–24mm 花道全景、仰角</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🎯</span>
+        <span class="tip-name">中焦段</span>
+        <span class="tip-desc">50–85mm 人像花朵特寫</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🔵</span>
+        <span class="tip-name">CPL 偏光鏡</span>
+        <span class="tip-desc">壓深藍天、消反光</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🪞</span>
+        <span class="tip-name">反光板</span>
+        <span class="tip-desc">思親步道人像補光</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🧹</span>
+        <span class="tip-name">清潔布</span>
+        <span class="tip-desc">木棉棉絮易沾鏡頭</span>
+      </div>
+      <div class="tip-item">
+        <span class="tip-icon">🧴</span>
+        <span class="tip-name">防曬補水</span>
+        <span class="tip-desc">全程戶外日曬強烈</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:12px;"></div>
+
+</div><!-- /page-itinerary -->
+
+<!-- ═══ PAGE: 交通 ═══ -->
+<div class="page" id="page-transport">
+
+  <div class="transport-hero">
+    <h2>🚗 交通導覽</h2>
+    <p>全程自駕，建議使用 Google Maps 即時路況</p>
+  </div>
+
+  <!-- 去程 -->
+  <div class="route-card fade-in">
+    <div class="route-header">
+      <div class="route-num">去</div>
+      <div>
+        <h3>台南南區 → 白河木棉花道</h3>
+        <span>約 50–60 分鐘｜走 86 快速道路</span>
+      </div>
+    </div>
+    <div class="route-steps">
+      <div class="route-step">
+        <span class="step-icon">📍</span>
+        <div class="step-text">從<strong>西門路一段</strong>出發，往北行駛</div>
+      </div>
+      <div class="route-step">
+        <span class="step-icon">🛣</span>
+        <div class="step-text">接<strong>86 快速道路</strong>（東西向快速公路）往東行駛</div>
+      </div>
+      <div class="route-step">
+        <span class="step-icon">↗️</span>
+        <div class="step-text">接<strong>台 1 線</strong>往北，過後壁轉往白河方向</div>
+      </div>
+      <div class="route-step">
+        <span class="step-icon">🌺</span>
+        <div class="step-text">抵達<strong>林初埤木棉花道</strong>（玉豐里）</div>
+      </div>
+    </div>
+  </div>
+
+  <a class="big-nav-btn" href="https://maps.google.com/maps/dir/?api=1&origin=22.9851,120.1946&destination=23.3781,120.4099&travelmode=driving" target="_blank">
+    🗺 開啟去程導航
+  </a>
+
+  <!-- 花道→午餐→蓮花 -->
+  <div class="route-card">
+    <div class="route-header">
+      <div class="route-num" style="background:var(--amber);">中</div>
+      <div>
+        <h3>白河區內移動</h3>
+        <span>花道 → 午餐 → 蓮花園 約 20 分鐘</span>
+      </div>
+    </div>
+    <div class="route-steps">
+      <div class="route-step">
+        <span class="step-icon">🍜</span>
+        <div class="step-text">林初埤 → 白河老街<strong>莊良伯麵店</strong>（約 8 分鐘）</div>
+      </div>
+      <div class="route-step">
+        <span class="step-icon">🪷</span>
+        <div class="step-text">老街 → <strong>白河蓮花園區</strong>（約 10 分鐘，往三民路方向）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 白河→玥園 -->
+  <div class="route-card">
+    <div class="route-header">
+      <div class="route-num" style="background:var(--forest);">午</div>
+      <div>
+        <h3>白河 → 玥園思親步道</h3>
+        <span>約 40–50 分鐘｜往玉井山區</span>
+      </div>
+    </div>
+    <div class="route-steps">
+      <div class="route-step">
+        <span class="step-icon">🛣</span>
+        <div class="step-text">白河往南接<strong>台 84 快速道路</strong>或省道往玉井</div>
+      </div>
+      <div class="route-step">
+        <span class="step-icon">⛰</span>
+        <div class="step-text">進入玉井山區，路窄彎多，建議<strong>小型車或機車</strong></div>
+      </div>
+      <div class="route-step">
+        <span class="step-icon">🌸</span>
+        <div class="step-text">抵達<strong>玥園思親步道</strong>（玉井區，停車位有限）</div>
+      </div>
+    </div>
+  </div>
+
+  <a class="big-nav-btn" href="https://maps.google.com/maps/dir/?api=1&origin=23.3781,120.4099&destination=23.1471,120.4616&travelmode=driving" target="_blank">
+    🗺 開啟中段導航
+  </a>
+
+  <!-- 回程 -->
+  <div class="route-card">
+    <div class="route-header">
+      <div class="route-num" style="background:var(--charcoal);">回</div>
+      <div>
+        <h3>玥園 → 台南南區（回程）</h3>
+        <span>約 40–50 分鐘</span>
+      </div>
+    </div>
+    <div class="route-steps">
+      <div class="route-step">
+        <span class="step-icon">↙️</span>
+        <div class="step-text">由玉井沿<strong>台 20 線</strong>往西下山</div>
+      </div>
+      <div class="route-step">
+        <span class="step-icon">🛣</span>
+        <div class="step-text">接<strong>台 84 快速道路</strong>往西至台南</div>
+      </div>
+      <div class="route-step">
+        <span class="step-icon">🏠</span>
+        <div class="step-text">抵達<strong>台南市南區</strong>西門路一段</div>
+      </div>
+    </div>
+  </div>
+
+  <a class="big-nav-btn" href="https://maps.google.com/maps/dir/?api=1&origin=23.1471,120.4616&destination=22.9851,120.1946&travelmode=driving" target="_blank">
+    🗺 開啟回程導航
+  </a>
+
+  <div style="height:12px;"></div>
+
+</div><!-- /page-transport -->
+
+<!-- ═══ PAGE: 資訊 ═══ -->
+<div class="page" id="page-info">
+
+  <div class="transport-hero" style="background: linear-gradient(135deg, var(--forest) 0%, #2A3D2B 100%);">
+    <h2>ℹ️ 注意事項</h2>
+    <p>出發前請詳閱，確保行程順暢</p>
+  </div>
+
+  <div class="info-section">
+    <h3>⚠️ 行前注意事項</h3>
+    <div class="warn-item">
+      <div class="warn-dot"></div>
+      <div class="warn-text"><strong>木棉花期</strong>：通常 3 月中旬至 4 月初，出發前請查詢<strong>白河區公所 Facebook</strong>確認當年花況。</div>
+    </div>
+    <div class="warn-item">
+      <div class="warn-dot"></div>
+      <div class="warn-text"><strong>林初埤停車</strong>：花季人潮眾多，建議 10:30 前抵達。田間路段停車，切勿違停佔道。</div>
+    </div>
+    <div class="warn-item">
+      <div class="warn-dot"></div>
+      <div class="warn-text"><strong>玥園路況</strong>：玉井山區路窄且彎，大型車不建議前往，會車困難。</div>
+    </div>
+    <div class="warn-item">
+      <div class="warn-dot"></div>
+      <div class="warn-text"><strong>莊良伯麵店</strong>：周一、周二公休，前往前請再次確認。</div>
+    </div>
+    <div class="warn-item">
+      <div class="warn-dot"></div>
+      <div class="warn-text"><strong>飲水補充</strong>：全程戶外日曬，請攜帶至少 1.5 升飲水與防曬乳。</div>
+    </div>
+    <div class="warn-item">
+      <div class="warn-dot"></div>
+      <div class="warn-text"><strong>木棉棉絮</strong>：花季期間棉絮飄散，有過敏體質者建議配戴口罩。</div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h3>📷 攝影裝備清單</h3>
+    <div class="gear-row">
+      <div class="gear-icon">🔭</div>
+      <div class="gear-text">
+        <strong>廣角鏡 16–24mm</strong>
+        <span>木棉花道延伸感、仰角全景構圖</span>
+      </div>
+    </div>
+    <div class="gear-row">
+      <div class="gear-icon">🎯</div>
+      <div class="gear-text">
+        <strong>中焦段 50–85mm</strong>
+        <span>步道人像、花朵特寫、壓縮感構圖</span>
+      </div>
+    </div>
+    <div class="gear-row">
+      <div class="gear-icon">🔵</div>
+      <div class="gear-text">
+        <strong>CPL 偏光鏡</strong>
+        <span>壓深藍天、消除葉片及水面反光</span>
+      </div>
+    </div>
+    <div class="gear-row">
+      <div class="gear-icon">🪞</div>
+      <div class="gear-text">
+        <strong>反光板（可折疊）</strong>
+        <span>玥園步道人像側光補光必備</span>
+      </div>
+    </div>
+    <div class="gear-row">
+      <div class="gear-icon">🧹</div>
+      <div class="gear-text">
+        <strong>鏡頭清潔布組</strong>
+        <span>木棉棉絮多，需頻繁清潔鏡頭</span>
+      </div>
+    </div>
+    <div class="gear-row">
+      <div class="gear-icon">🔋</div>
+      <div class="gear-text">
+        <strong>備用電池 + 行動電源</strong>
+        <span>全天行程，建議至少 2 顆備用電池</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h3>🌡️ 最佳光線時間表</h3>
+    <div class="warn-item">
+      <div class="warn-dot" style="background:var(--amber);"></div>
+      <div class="warn-text"><strong>10:30–11:30</strong>：林初埤花道，上午側順光，藍天對比最強烈。</div>
+    </div>
+    <div class="warn-item">
+      <div class="warn-dot" style="background:var(--amber);"></div>
+      <div class="warn-text"><strong>13:30–14:15</strong>：蓮花農村，午後柔和光，田野廣角拍攝佳。</div>
+    </div>
+    <div class="warn-item">
+      <div class="warn-dot" style="background:var(--rust);"></div>
+      <div class="warn-text"><strong>15:00–16:30 ⭐</strong>：玥園思親步道黃金時段，太陽偏西斜射，丁達爾光柱最美。</div>
+    </div>
+  </div>
+
+  <div style="height:12px;"></div>
+
+</div><!-- /page-info -->
+
+<!-- ═══ BOTTOM NAV ═══ -->
+<nav class="bottom-nav">
+  <button class="nav-item active" onclick="switchPage('itinerary', this)">
+    <span class="nav-icon">🗓</span>
+    <span class="nav-label">行程</span>
+  </button>
+  <button class="nav-item" onclick="switchPage('transport', this)">
+    <span class="nav-icon">🚗</span>
+    <span class="nav-label">交通</span>
+  </button>
+  <button class="nav-item" onclick="switchPage('info', this)">
+    <span class="nav-icon">ℹ️</span>
+    <span class="nav-label">資訊</span>
+  </button>
+</nav>
+
+<script>
+  // Page switching
+  function switchPage(name, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Generate falling petals
+  const petalContainer = document.getElementById('petals');
+  const colors = ['#fff', '#FFD0A8', '#F5A87A', '#FFEBD4'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 8 + Math.random() * 18;
+    p.style.cssText = `
+      width: ${size}px;
+      height: ${size * 0.7}px;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      animation-duration: ${4 + Math.random() * 6}s;
+      animation-delay: ${Math.random() * 5}s;
+    `;
+    petalContainer.appendChild(p);
+  }
+</script>
+</body>
+</html>
